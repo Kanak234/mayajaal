@@ -1,3 +1,5 @@
+<p align="center"><img src="icon.png" width="128" alt="Mayajaal logo"></p>
+
 # Mayajaal — Web of Magic 🕸️⚡
 
 A themed VS Code experience for a **Spider-Man fan and a Potterhead**.
