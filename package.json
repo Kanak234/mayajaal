@@ -2,7 +2,7 @@
   "name": "mayajaal",
   "displayName": "Mayajaal \u2014 Web of Magic",
   "description": "A themed VS Code experience for a Spider-Man fan and a Potterhead: a dark 'web-and-wand' colour theme, a calligraphy banner inserter, and a magical animated welcome panel.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "KANAKPRABHAKAR",
   "author": {
     "name": "Kanak Prabhakar"
@@ -54,5 +54,6 @@
   "bugs": {
     "url": "https://github.com/Kanak234/mayajaal/issues"
   },
-  "homepage": "https://github.com/Kanak234/mayajaal#readme"
+  "homepage": "https://github.com/Kanak234/mayajaal#readme",
+  "icon": "icon.png"
 }
