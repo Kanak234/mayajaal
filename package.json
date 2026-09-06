@@ -1,0 +1,58 @@
+{
+  "name": "mayajaal",
+  "displayName": "Mayajaal \u2014 Web of Magic",
+  "description": "A themed VS Code experience for a Spider-Man fan and a Potterhead: a dark 'web-and-wand' colour theme, a calligraphy banner inserter, and a magical animated welcome panel.",
+  "version": "1.0.0",
+  "publisher": "kanak-prabhakar",
+  "author": {
+    "name": "Kanak Prabhakar"
+  },
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Themes",
+    "Other"
+  ],
+  "keywords": [
+    "theme",
+    "dark",
+    "spiderman",
+    "harry potter",
+    "calligraphy"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "themes": [
+      {
+        "label": "Mayajaal (Web & Wand)",
+        "uiTheme": "vs-dark",
+        "path": "./themes/mayajaal-color-theme.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "mayajaal.welcome",
+        "title": "Mayajaal: Open Magical Welcome"
+      },
+      {
+        "command": "mayajaal.spell",
+        "title": "Mayajaal: Cast a Spell (motivation)"
+      },
+      {
+        "command": "mayajaal.banner",
+        "title": "Mayajaal: Insert Calligraphy Banner"
+      }
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kanak234/mayajaal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kanak234/mayajaal/issues"
+  },
+  "homepage": "https://github.com/Kanak234/mayajaal#readme"
+}

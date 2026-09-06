@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mayajaal</title>
+<style>
+  :root{
+    --bg:#0B0D14; --gold:#C9A227; --crimson:#E23636; --ink:#E7DEC9; --web:#2A2F45;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;background:var(--bg);overflow:hidden;font-family:"Georgia","Cormorant Garamond",serif;color:var(--ink)}
+  .stage{position:relative;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+  canvas{position:absolute;inset:0;width:100%;height:100%}
+  .content{position:relative;z-index:2;padding:24px}
+  .kicker{font-family:"Trebuchet MS",sans-serif;letter-spacing:.42em;text-transform:uppercase;font-size:12px;color:var(--gold);opacity:0;animation:fade 1.2s .3s forwards}
+  h1{font-size:clamp(44px,11vw,120px);line-height:.95;letter-spacing:.02em;
+     background:linear-gradient(180deg,#F3E4B0,#C9A227 55%,#8a6a10);
+     -webkit-background-clip:text;background-clip:text;color:transparent;
+     text-shadow:0 0 34px rgba(201,162,39,.25);opacity:0;transform:translateY(14px);
+     animation:rise 1.1s .5s cubic-bezier(.2,.8,.2,1) forwards}
+  .devanagari{font-size:clamp(26px,6vw,58px);color:var(--crimson);margin-top:2px;opacity:0;animation:fade 1.2s 1s forwards;text-shadow:0 0 22px rgba(226,54,54,.35)}
+  .tag{margin-top:18px;font-size:16px;color:#B9B29C;opacity:0;animation:fade 1.4s 1.4s forwards}
+  .tag b{color:var(--gold)}
+  .marks{margin-top:26px;display:flex;gap:22px;justify-content:center;font-size:26px;opacity:0;animation:fade 1.4s 1.8s forwards}
+  .marks span{filter:drop-shadow(0 0 10px rgba(226,54,54,.4))}
+  @keyframes fade{to{opacity:1}}
+  @keyframes rise{to{opacity:1;transform:translateY(0)}}
+  @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="stage">
+  <canvas id="web"></canvas>
+  <div class="content">
+    <div class="kicker">Web &amp; Wand · a theme for a builder</div>
+    <h1>MAYAJAAL</h1>
+    <div class="devanagari">मायाजाल</div>
+    <p class="tag">The <b>web of magic</b> — Spider-Man's web, a wizard's spell, one editor.<br>Crafted for <b>Kanak Prabhakar</b>.</p>
+    <div class="marks"><span>🕸️</span><span>⚡</span><span>🪄</span><span>🕷️</span></div>
+  </div>
+</div>
+<script>
+  // Animated spider-web + drifting golden magic-motes. Pure canvas, no deps.
+  const c = document.getElementById('web'), x = c.getContext('2d');
+  let W, H, motes = [];
+  function size(){ W = c.width = innerWidth; H = c.height = innerHeight; }
+  size(); addEventListener('resize', size);
+
+  const cx = () => W * 0.5, cy = () => H * 0.46;
+  const RINGS = 7, SPOKES = 14;
+
+  function drawWeb(t){
+    const R = Math.min(W, H) * 0.62;
+    x.lineWidth = 1;
+    // spokes
+    for (let s = 0; s < SPOKES; s++){
+      const a = (s / SPOKES) * Math.PI * 2;
+      x.strokeStyle = 'rgba(42,47,69,0.9)';
+      x.beginPath(); x.moveTo(cx(), cy());
+      x.lineTo(cx() + Math.cos(a) * R, cy() + Math.sin(a) * R); x.stroke();
+    }
+    // rings, gently breathing
+    for (let r = 1; r <= RINGS; r++){
+      const rad = (R / RINGS) * r * (1 + Math.sin(t / 1400 + r) * 0.012);
+      x.strokeStyle = r % 2 ? 'rgba(201,162,39,0.10)' : 'rgba(42,47,69,0.8)';
+      x.beginPath();
+      for (let s = 0; s <= SPOKES; s++){
+        const a = (s / SPOKES) * Math.PI * 2;
+        const px = cx() + Math.cos(a) * rad, py = cy() + Math.sin(a) * rad;
+        s ? x.lineTo(px, py) : x.moveTo(px, py);
+      }
+      x.stroke();
+    }
+  }
+
+  function ensureMotes(){
+    while (motes.length < 46){
+      motes.push({ x: Math.random()*W, y: Math.random()*H,
+        s: 0.5 + Math.random()*1.6, v: 0.2 + Math.random()*0.5,
+        p: Math.random()*Math.PI*2 });
+    }
+  }
+  function drawMotes(t){
+    ensureMotes();
+    for (const m of motes){
+      m.y -= m.v; m.x += Math.sin(t/900 + m.p) * 0.3;
+      if (m.y < -6){ m.y = H + 6; m.x = Math.random()*W; }
+      const tw = 0.5 + 0.5*Math.sin(t/300 + m.p);
+      x.beginPath(); x.arc(m.x, m.y, m.s, 0, Math.PI*2);
+      x.fillStyle = 'rgba(201,162,39,' + (0.15 + tw*0.5) + ')';
+      x.shadowColor = 'rgba(226,54,54,0.5)'; x.shadowBlur = 8*tw;
+      x.fill(); x.shadowBlur = 0;
+    }
+  }
+
+  function loop(t){
+    x.clearRect(0,0,W,H);
+    drawWeb(t); drawMotes(t);
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+</script>
+</body>
+</html>

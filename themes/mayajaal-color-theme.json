@@ -1,0 +1,110 @@
+{
+  "name": "Mayajaal (Web & Wand)",
+  "type": "dark",
+  "semanticHighlighting": true,
+  "colors": {
+    "editor.background": "#0B0D14",
+    "editor.foreground": "#E7DEC9",
+    "editorCursor.foreground": "#E23636",
+    "editor.lineHighlightBackground": "#141726",
+    "editor.selectionBackground": "#3A1D2A",
+    "editor.selectionHighlightBackground": "#2A1620",
+    "editorLineNumber.foreground": "#4B5168",
+    "editorLineNumber.activeForeground": "#C9A227",
+    "editorWhitespace.foreground": "#1C2030",
+    "editorIndentGuide.background1": "#191D2C",
+    "editorIndentGuide.activeBackground1": "#3A2233",
+    "sideBar.background": "#090A11",
+    "sideBar.foreground": "#B9B29C",
+    "sideBarTitle.foreground": "#C9A227",
+    "sideBarSectionHeader.background": "#0E1019",
+    "activityBar.background": "#070810",
+    "activityBar.foreground": "#E23636",
+    "activityBar.inactiveForeground": "#4B5168",
+    "activityBarBadge.background": "#7A0E1E",
+    "activityBarBadge.foreground": "#F5EFE0",
+    "statusBar.background": "#7A0E1E",
+    "statusBar.foreground": "#F5EFE0",
+    "statusBar.noFolderBackground": "#4A2A12",
+    "statusBarItem.remoteBackground": "#C9A227",
+    "statusBarItem.remoteForeground": "#0B0D14",
+    "titleBar.activeBackground": "#0B0D14",
+    "titleBar.activeForeground": "#C9A227",
+    "titleBar.inactiveBackground": "#090A11",
+    "tab.activeBackground": "#141726",
+    "tab.activeForeground": "#E7DEC9",
+    "tab.activeBorderTop": "#E23636",
+    "tab.inactiveBackground": "#090A11",
+    "tab.inactiveForeground": "#6A6F84",
+    "panel.background": "#090A11",
+    "panelTitle.activeForeground": "#C9A227",
+    "terminal.background": "#070810",
+    "terminal.foreground": "#D8CFB8",
+    "terminal.ansiRed": "#E23636",
+    "terminal.ansiYellow": "#C9A227",
+    "terminal.ansiGreen": "#6FBF8B",
+    "terminal.ansiBlue": "#5B8AC9",
+    "terminal.ansiMagenta": "#B45FA0",
+    "terminal.ansiCyan": "#5FB4B4",
+    "button.background": "#7A0E1E",
+    "button.foreground": "#F5EFE0",
+    "button.hoverBackground": "#9A2333",
+    "focusBorder": "#C9A227",
+    "list.activeSelectionBackground": "#2A1620",
+    "list.activeSelectionForeground": "#F5EFE0",
+    "list.hoverBackground": "#141726",
+    "input.background": "#0E1019",
+    "input.foreground": "#E7DEC9",
+    "badge.background": "#C9A227",
+    "badge.foreground": "#0B0D14",
+    "progressBar.background": "#E23636",
+    "scrollbarSlider.background": "#2A1D2E80",
+    "scrollbarSlider.hoverBackground": "#3A2233"
+  },
+  "tokenColors": [
+    {
+      "scope": ["comment", "punctuation.definition.comment"],
+      "settings": { "foreground": "#5B6178", "fontStyle": "italic" }
+    },
+    {
+      "scope": ["string", "string.quoted"],
+      "settings": { "foreground": "#C9A227" }
+    },
+    {
+      "scope": ["constant.numeric", "constant.language", "constant.character"],
+      "settings": { "foreground": "#D98C5F" }
+    },
+    {
+      "scope": ["keyword", "storage.type", "storage.modifier", "keyword.control"],
+      "settings": { "foreground": "#E23636" }
+    },
+    {
+      "scope": ["entity.name.function", "support.function", "meta.function-call"],
+      "settings": { "foreground": "#8FB7E8" }
+    },
+    {
+      "scope": ["variable", "variable.other", "meta.definition.variable"],
+      "settings": { "foreground": "#E7DEC9" }
+    },
+    {
+      "scope": ["entity.name.type", "entity.name.class", "support.type", "support.class"],
+      "settings": { "foreground": "#B45FA0" }
+    },
+    {
+      "scope": ["entity.name.tag", "punctuation.definition.tag"],
+      "settings": { "foreground": "#E23636" }
+    },
+    {
+      "scope": ["entity.other.attribute-name"],
+      "settings": { "foreground": "#C9A227", "fontStyle": "italic" }
+    },
+    {
+      "scope": ["markup.heading", "markup.bold"],
+      "settings": { "foreground": "#C9A227", "fontStyle": "bold" }
+    },
+    {
+      "scope": ["invalid", "invalid.illegal"],
+      "settings": { "foreground": "#FF5F5F" }
+    }
+  ]
+}
