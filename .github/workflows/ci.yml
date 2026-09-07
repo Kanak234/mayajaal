@@ -1,0 +1,26 @@
+name: Extension CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Validate syntax
+        run: |
+          node --check extension.js
+      - name: Validate theme JSON
+        run: |
+          node -e "JSON.parse(require('fs').readFileSync('./themes/mayajaal-color-theme.json', 'utf8')); console.log('Theme OK');"
+      - name: Package VSIX
+        run: |
+          npx --yes @vscode/vsce package --no-git-tag-version
