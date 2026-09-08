@@ -2,6 +2,7 @@
 const vscode = require("vscode");
 const fs = require("fs");
 const path = require("path");
+const { Jaadu } = require("./jaadu.js");
 
 // A few spells / lines that fit a Potterhead + Spider-Man dev.
 const SPELLS = [
@@ -23,6 +24,18 @@ function insertBanner(editor, text) {
 }
 
 function activate(context) {
+  // जादू — typing effects. Everything it does is switchable off in settings;
+  // see mayajaal.jaadu.* . It is created first so the status bar appears as
+  // soon as the window is ready.
+  const jaadu = new Jaadu(context);
+  context.subscriptions.push(
+    vscode.workspace.onDidChangeTextDocument(e => jaadu.badla(e)),
+    vscode.workspace.onDidChangeConfiguration(e => {
+      if (e.affectsConfiguration("mayajaal.jaadu")) jaadu.padho();
+    }),
+    vscode.commands.registerCommand("mayajaal.jaaduToggle", () => jaadu.toggle())
+  );
+
   const bar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
   bar.text = "🕸️ Mayajaal";
   bar.tooltip = "Web of Magic — cast a spell";
