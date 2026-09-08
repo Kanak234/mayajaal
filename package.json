@@ -1,8 +1,8 @@
 {
   "name": "mayajaal",
-  "displayName": "Mayajaal \u2014 Web of Magic",
+  "displayName": "Mayajaal — Web of Magic",
   "description": "A themed VS Code experience for a Spider-Man fan and a Potterhead: a dark 'web-and-wand' colour theme, a calligraphy banner inserter, and a magical animated welcome panel.",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "publisher": "KANAKPRABHAKAR",
   "author": {
     "name": "Kanak Prabhakar"
@@ -22,7 +22,9 @@
     "harry potter",
     "calligraphy"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./extension.js",
   "contributes": {
     "themes": [
@@ -44,8 +46,38 @@
       {
         "command": "mayajaal.banner",
         "title": "Mayajaal: Insert Calligraphy Banner"
+      },
+      {
+        "command": "mayajaal.jaaduToggle",
+        "title": "Mayajaal: जादू चालू/बंद करो",
+        "category": "Mayajaal"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Mayajaal",
+      "properties": {
+        "mayajaal.jaadu.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Typing effects. Turn this off and Mayajaal is just the colour theme."
+        },
+        "mayajaal.jaadu.statusBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the streak counter in the status bar."
+        },
+        "mayajaal.jaadu.cursorMarks": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show a small mark beside the cursor as you type."
+        },
+        "mayajaal.jaadu.milestones": {
+          "type": "boolean",
+          "default": true,
+          "description": "Announce milestones — 25, 50, 100, 200, 300, 500 characters in one streak."
+        }
+      }
+    }
   },
   "repository": {
     "type": "git",
@@ -55,5 +87,8 @@
     "url": "https://github.com/Kanak234/mayajaal/issues"
   },
   "homepage": "https://github.com/Kanak234/mayajaal#readme",
-  "icon": "icon.png"
+  "icon": "icon.png",
+  "scripts": {
+    "test": "node test/jaadu.test.js"
+  }
 }
